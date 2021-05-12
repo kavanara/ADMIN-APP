@@ -311,6 +311,9 @@ export class App extends React.Component {
                 </div>
               </div>
             </div>
+            <Link to="/Switch_Profiles" className="navbar-brand">
+            <Button><GiSaveArrow/> Save</Button>
+            </Link>
 
             <br/>
             <br/>
