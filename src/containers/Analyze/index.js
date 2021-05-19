@@ -185,153 +185,153 @@
 
 
 
-import React,{Component} from 'react';
-import {Line} from 'react-chartjs-2';
-import Layout from "../../components/Layout";
-import { Container } from "react-bootstrap";
-import { Jumbotron } from "react-bootstrap";
+// import React,{Component} from 'react';
+// import {Line} from 'react-chartjs-2';
+// import Layout from "../../components/Layout";
+// import { Container } from "react-bootstrap";
+// import { Jumbotron } from "react-bootstrap";
 
-class BarChart extends Component
-{
-  constructor() {
-    super();
-    this.state = {
-      lineChartData: []
-    }
-//EVENT BINDINGS FOR ONCLICK EVENTS ON BUTTONS
-    this.change0 = this.change0.bind(this);
-    this.change1 = this.change1.bind(this);
-    this.change2 = this.change2.bind(this);
-  }
+// class BarChart extends Component
+// {
+//   constructor() {
+//     super();
+//     this.state = {
+//       lineChartData: []
+//     }
+// //EVENT BINDINGS FOR ONCLICK EVENTS ON BUTTONS
+//     this.change0 = this.change0.bind(this);
+//     this.change1 = this.change1.bind(this);
+//     this.change2 = this.change2.bind(this);
+//   }
 
-  componentDidMount() {
-    this.change0();
-    }
+//   componentDidMount() {
+//     this.change0();
+//     }
 
 
-  change0(){
-    this.setState({
-      lineChartData:{
-        labels: ['9 am', '3 pm', '9 pm',],
-        datasets: [
-          {
-            label: 'Daily',
-            fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'red',
-      borderColor: 'red',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'blue',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
+//   change0(){
+//     this.setState({
+//       lineChartData:{
+//         labels: ['9 am', '3 pm', '9 pm',],
+//         datasets: [
+//           {
+//             label: 'Daily',
+//             fill: false,
+//       lineTension: 0.1,
+//       backgroundColor: 'red',
+//       borderColor: 'red',
+//       borderCapStyle: 'butt',
+//       borderDash: [],
+//       borderDashOffset: 0.0,
+//       borderJoinStyle: 'miter',
+//       pointBorderColor: 'rgba(75,192,192,1)',
+//       pointBackgroundColor: '#fff',
+//       pointBorderWidth: 1,
+//       pointHoverRadius: 5,
+//       pointHoverBackgroundColor: 'blue',
+//       pointHoverBorderColor: 'rgba(220,220,220,1)',
+//       pointHoverBorderWidth: 2,
+//       pointRadius: 1,
+//       pointHitRadius: 10,
             
-            data: [65, 59, 80]
-          }
-        ]
-      }
-    })
-  }
-    //OUR TWO NEW METHODS FOR  UPDATING THE STATE barChartData BASED ON EVENTS ON CLICK 
-    change1(){
-      this.setState({
-        lineChartData:{
-          labels: ['Sunday', 'monday', 'tuesday','Wednesday','thursday','Friday','Saturday'],
-          datasets: [
-            {
-              label: 'weekly',
-              fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'red',
-      borderColor: 'red',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'blue',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-              data: [49, 22, 23,65,43,21,7]
-            }
-          ]
-        }
-      })
-    }
+//             data: [65, 59, 80]
+//           }
+//         ]
+//       }
+//     })
+//   }
+//     //OUR TWO NEW METHODS FOR  UPDATING THE STATE barChartData BASED ON EVENTS ON CLICK 
+//     change1(){
+//       this.setState({
+//         lineChartData:{
+//           labels: ['Sunday', 'monday', 'tuesday','Wednesday','thursday','Friday','Saturday'],
+//           datasets: [
+//             {
+//               label: 'weekly',
+//               fill: false,
+//       lineTension: 0.1,
+//       backgroundColor: 'red',
+//       borderColor: 'red',
+//       borderCapStyle: 'butt',
+//       borderDash: [],
+//       borderDashOffset: 0.0,
+//       borderJoinStyle: 'miter',
+//       pointBorderColor: 'rgba(75,192,192,1)',
+//       pointBackgroundColor: '#fff',
+//       pointBorderWidth: 1,
+//       pointHoverRadius: 5,
+//       pointHoverBackgroundColor: 'blue',
+//       pointHoverBorderColor: 'rgba(220,220,220,1)',
+//       pointHoverBorderWidth: 2,
+//       pointRadius: 1,
+//       pointHitRadius: 10,
+//               data: [49, 22, 23,65,43,21,7]
+//             }
+//           ]
+//         }
+//       })
+//     }
 
-  change2(){
-    this.setState({
-      lineChartData:{
-        labels: ['January', 'February', 'March','April','May','June', 'July', 'Aug', 'Sept','Oct', 'Nov', 'Dec'],
-        datasets: [
-          {
-            label: 'Monthly',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'red',
-            borderColor: 'red',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'blue',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [49, 22, 23,65,43,21,56,57, 100,23,43,21,]
-          }
-        ]
-      }
-    })
-  }
+//   change2(){
+//     this.setState({
+//       lineChartData:{
+//         labels: ['January', 'February', 'March','April','May','June', 'July', 'Aug', 'Sept','Oct', 'Nov', 'Dec'],
+//         datasets: [
+//           {
+//             label: 'Monthly',
+//             fill: false,
+//             lineTension: 0.1,
+//             backgroundColor: 'red',
+//             borderColor: 'red',
+//             borderCapStyle: 'butt',
+//             borderDash: [],
+//             borderDashOffset: 0.0,
+//             borderJoinStyle: 'miter',
+//             pointBorderColor: 'rgba(75,192,192,1)',
+//             pointBackgroundColor: '#fff',
+//             pointBorderWidth: 1,
+//             pointHoverRadius: 5,
+//             pointHoverBackgroundColor: 'blue',
+//             pointHoverBorderColor: 'rgba(220,220,220,1)',
+//             pointHoverBorderWidth: 2,
+//             pointRadius: 1,
+//             pointHitRadius: 10,
+//             data: [49, 22, 23,65,43,21,56,57, 100,23,43,21,]
+//           }
+//         ]
+//       }
+//     })
+//   }
 
-  render() {
-    return (
-      <Layout>
-      <Jumbotron
-        style={{ margin: "0rem", background: "#fff" }}
-        className="text-center"
-      >
-        <Container>
-         <h1 class="text-left">Seasonality</h1>
-        <div>
-        <div class="col-6">
-          <Line data={this.state.lineChartData}  />
+//   render() {
+//     return (
+//       <Layout>
+//       <Jumbotron
+//         style={{ margin: "0rem", background: "#fff" }}
+//         className="text-center"
+//       >
+//         <Container>
+//          <h1 class="text-left">Time Series</h1>
+//         <div>
+//         <div class="col-6">
+//           <Line data={this.state.lineChartData}  />
         
-          <button onClick={this.change0}>Daily</button>
-          &nbsp;&nbsp;
-          <button onClick={this.change1}>Weekly</button>
-          &nbsp;&nbsp;
-          <button onClick={this.change2}>Monthly</button>
-          {/*<button onClick={this.change2}></button>*/}
-        </div>
-        </div>
-        </Container>
-        </Jumbotron>
-      </Layout>
-  )
-  }
-}
+//           <button onClick={this.change0}>Daily</button>
+//           &nbsp;&nbsp;
+//           <button onClick={this.change1}>Weekly</button>
+//           &nbsp;&nbsp;
+//           <button onClick={this.change2}>Monthly</button>
+//           {/*<button onClick={this.change2}></button>*/}
+//         </div>
+//         </div>
+//         </Container>
+//         </Jumbotron>
+//       </Layout>
+//   )
+//   }
+// }
 
-export default (BarChart);
+// export default (BarChart);
 
 
 // class App3 extends Component {
@@ -417,3 +417,72 @@ export default (BarChart);
 //     );
 //   }
 // }
+import React, { Component } from "react";
+
+import { Link } from "react-router-dom";
+import { Line } from "react-chartjs-2";
+import Layout from "../../components/Layout";
+import { Container, InputGroup, FormControl, Tabs } from "react-bootstrap";
+import { Jumbotron,Button } from "react-bootstrap";
+import { App1, App2, App3, App4, App10, App11 } from "../Analyze/index1";
+
+import { GiSaveArrow} from "react-icons/gi";
+
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: "Synthetic",
+    };
+  }
+
+  setSelected = (tab) => {
+    this.setState({ selected: tab });
+  };
+  render() {
+    return (
+      <Layout>
+        <Jumbotron
+          style={{ margin: "0rem", background: "#fff" }}
+          className="text-center"
+        >
+          <Container>
+            <div>
+              <h1>
+                
+              </h1>
+            </div>
+
+            <div>
+              
+                      <App3/>
+                      <App10/>
+                  {/* <br />
+                  <br />
+                  <App3/>
+                  <br/>
+                  <br/>
+                  <App1 />
+                  <br />
+                  <br />
+                  <App2 />
+                  <br />
+                  <br />
+                 
+                 
+                  */}
+                
+              {/* <Link to="/Run_profiles" className="navbar-brand">
+              <Button> <GiSaveArrow/> Save</Button> 
+              </Link> */}
+            </div>
+          </Container>
+        </Jumbotron>
+      </Layout>
+    );
+  }
+}
+
+//render(<App />, document.body);
+export default App;

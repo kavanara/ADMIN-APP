@@ -52,9 +52,9 @@ const Header = (props) => {
             <NavLink to="/synthetic" className="nav-link">
               Counter Profiles
             </NavLink>
-            {/* <NavLink to="/field"className="nav-link">
-          field
-          </NavLink> */}
+            <NavLink to="/Analyze"className="nav-link">
+          Analyze
+          </NavLink>
             {/* <NavLink to="/trial"className="nav-link">
           trial
           </NavLink> */}

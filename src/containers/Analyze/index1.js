@@ -1,38 +1,39 @@
 import React, { Component } from "react";
 import Select from "react-select";
-import { Line } from "react-chartjs-2";
+import { Line ,Scatter} from "react-chartjs-2";
 import Layout from "../../components/Layout";
 import { Container, FormControl, Form ,Button} from "react-bootstrap";
 import { Jumbotron } from "react-bootstrap";
-import { flexbox } from "../synthetic/synthetic.css";
+
 import { IoMdAdd, IoIosRemove } from "react-icons/io";
 import { GrFormSubtract } from "react-icons/gr";
 import { GiSaveArrow} from "react-icons/gi";
 let lineData;
 
 const lineDataSignal = {
-  labels: ["1s", "2s", "3s", "4s", "5s", "6s", "7s", "8s", "9s", "10s", "11s", "12s", "13s", "14s", "15s", "16s", "17s"],
+  labels: ["1s", "2s", "3s", "4s", "5s", "6s", "7s"],
   datasets: [
     {
-      label: "Signal",
+      label: "San Insights",
       fill: false,
-      lineTension: 0.1,
+      lineTension: 1,
       backgroundColor: "red",
       borderColor: "red",
       borderCapStyle: "butt",
       borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: "miter",
+      pointColor:"red",
       pointBorderColor: "rgba(75,192,192,1)",
-      pointBackgroundColor: "#fff",
+      pointBackgroundColor: "red",
       pointBorderWidth: 1,
       pointHoverRadius: 5,
       pointHoverBackgroundColor: "black",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
+      pointHoverBorderColor: "red",
+      pointHoverBorderWidth: 22,
+      pointRadius: 5,
       pointHitRadius: 10,
-      data: [0, 10, 0, 30, 44, 56, 32, 77, 93, 109, 81, 5, 47, 98, 14, 31, 99],
+      data: [,25,],
     },
   ],
 };
@@ -941,7 +942,7 @@ class App10 extends Component {
     const colors = ["blue", "red", "green", "black", "blue", "blueviolet", "brown ", " burlywood ", "cadetblue", "chartreuse", "chocolate"];
     seriesList.map((item, idx) => (
       datasets.push({
-        label: `Normal  Mean:${item.mean}  Std.Dev:${item.stdDev} `,
+        //label: `Normal  Mean:${item.mean}  Std.Dev:${item.stdDev} `,
         fill: false,
         lineTension: 0.1,
         backgroundColor: colors[idx],
@@ -1107,7 +1108,7 @@ class App10 extends Component {
 
     return (
       <Container>
-        <div>
+        {/* <div>
           <div className="container">
             <h2 class="text-left">Residue </h2>
             <div className="row clearfix">
@@ -1166,25 +1167,15 @@ class App10 extends Component {
                 </table>
               </div>
 
-              <div className="col-md-2 column">
-                <button onClick={this.handleAddRow} className="btn btn-primary">
-                  <IoMdAdd />
-                </button>
-                <button
-                  onClick={this.handleRemoveRow}
-                  className="btn btn-primary float-right"
-                >
-                  <IoIosRemove />
-                </button>
-              </div>
+            
             </div>
           </div>
-        </div>
+        </div> */}
 
 
-        <div class="col-8">
-          <Line data={this.getLineData(this.state.seriesList)} options={lineOptions} />
-        </div>
+<div class="col-8">
+            <Line data={lineDataSignal} options={lineOptions} />
+          </div>
       
       </Container>
     );
@@ -1270,8 +1261,8 @@ class App3 extends Component {
       {
         id: 2,
         check: false,
-        value: "Point",
-        label: "Point",
+        value: "40000",
+        label: "40000",
         mean: "",
         stdDev: "",
 
@@ -1333,7 +1324,8 @@ class App3 extends Component {
     const colors = ["blue", "red", "green", "black", "blue", "blueviolet", "brown ", " burlywood ", "cadetblue", "chartreuse", "chocolate"];
     seriesList.map((item, idx) => (
       datasets.push({
-        label: `Point  Period:${item.mean}  Frequency:${item.stdDev} `,
+       // label: `Point  Period:${item.mean}  Frequency:${item.stdDev} `,
+       label:'Streamed Data',
         fill: false,
         lineTension: 0.1,
         backgroundColor: colors[idx],
@@ -1501,16 +1493,30 @@ class App3 extends Component {
       <Container>
         <div>
           <div className="container">
-            <h2 class="text-left">Anomaly</h2>
+            <h1>Time Series</h1>
             <div className="row clearfix">
               <div className="col-md-10 column">
-                <table
+               
+                        {this.state.seriesList.map((item, idx) => (
+                      <tr id="addr0" key={idx}>
+                        
+                        <td width="40%" scope="col" class="text-left">
+                        <h3>ITL</h3>  <Select
+                            onChange={this.handleChange}
+                            options={options}
+                          />
+                        </td>
+                        </tr>
+                        ))}
+
+
+                {/* <table
                   className="table table-bordered table-hover"
                   id="tab_logic"
                 >
                   <thead>
                     <tr>
-                      {/* <th className="text-center">Check</th> */}
+                   
                       <th className="text-center"> Anomaly </th>
                       <th className="text-center"> Period </th>
                       <th className="text-center"> Frequency</th>
@@ -1519,14 +1525,14 @@ class App3 extends Component {
                   <tbody>
                     {this.state.seriesList.map((item, idx) => (
                       <tr id="addr0" key={idx}>
-                        {/* <td width="5%" scope="col" class="text">
+                        <td width="5%" scope="col" class="text">
                           <input
                             type="checkbox"
                             id={idx.id}
                             checked={idx.check}
                             onChange={this.handleChange1}
                           />
-                        </td> */}
+                        </td>
                         <td width="40%" scope="col" class="text">
                           <Select
                             onChange={this.handleChange}
@@ -1555,7 +1561,7 @@ class App3 extends Component {
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </table> */}
               </div>
 
               {/* <div className="col-md-2 column">
@@ -1577,6 +1583,9 @@ class App3 extends Component {
         <div class="col-8">
           <Line data={this.getLineData(this.state.seriesList)} options={lineOptions} />
         </div>
+        {/* <div class="col-8">
+          <Scatter data={this.getLineData(this.state.seriesList)} options={lineOptions} />
+        </div> */}
         
       </Container>
     );

@@ -11,7 +11,7 @@ import tp from './containers/tp';
 import New_Switch_Profiles from './containers/New_Switch_Profiles';
 import trial from './containers/trial';
 import synthetic from './containers/synthetic';
-import field from './containers/field';
+import Analyze from './containers/Analyze';
 import Run_profiles from './containers/Run_profiles';
 import ReactDOM from 'react-dom';
 import Category from './containers/Category';
@@ -33,7 +33,7 @@ function App() {
          <Route path="/tp" component ={tp} /> 
         
          <Route path="/synthetic" component ={synthetic} /> 
-         <Route path="/field" component ={field} /> 
+         <Route path="/Analyze" component ={Analyze} /> 
          <Route path="/trial" component ={trial} /> 
          <Route path="/Run_profiles" component ={Run_profiles} /> 
       </Switch>
