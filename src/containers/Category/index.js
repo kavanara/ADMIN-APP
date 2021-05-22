@@ -2,58 +2,64 @@ import React, {useEffect} from "react";
 import ReactDOM from "react-dom";
 import h337 from "heatmap.js";
 import Layout from "../../components/Layout";
-import { Container } from "react-bootstrap";
+import { Container ,Button} from "react-bootstrap";
 
-function App() {
 
-  useEffect(() => {
-    var heatmapInstance = h337.create({
-      // only container is required, the rest will be defaults
-      container: document.querySelector('.App')
-    });
-    // now generate some random data
-    var points = [0,0,0,2];
-    var max = 0;
-    var width = 840;
-    var height = 400;
-    var len = 200;
 
-    while (len--) {
-     var val = Math.floor(Math.random()*100);
-     max = Math.max(max, val);
-     var point = {
-      x: Math.floor(Math.random()*width),
-      y: Math.floor(Math.random()*height),
-      value: val
-     };
-     points.push(point);
-   }
-   // heatmap data format
-  var data = {
-    max: max,
-    data: points
-  };
-  // if you have a set of datapoints always use setData instead of addData
-  // for data initialization
-  heatmapInstance.setData(data);
- })
+class App extends React.Component {
+  state = { count:0};
+  
+  increment = () => {
+    this.setState({ count : this.state.count+1});
+
+  }
+  
   
 
   
+render(){
   return (
+
     <Layout>
       <Container>
 
 
-        <br/>
-    <div className="App">
-      <h1>hi</h1>
-    
-    </div>
-    </Container>
+       
+       <div className="App">
+           <h1>hi</h1>
+            {this.state.count}
+            
+        </div>
+        <button onClick={this.increment}>Incrmenet by 1</button>
+      </Container>
     </Layout>
-  );
+  )
+ }
 }
 
+
+// class App extends React.Component {
+
+//   state = { count: 0 }
+  
+//   handleIncrement = () => {
+//     this.setState({ count: this.state.count + 1 })
+//   }
+  
+//   handleDecrement = () => {
+//     this.setState({ count: this.state.count - 1 })
+//   }
+//     render() {
+//       return (
+//         <div>
+//           <div>
+//             {this.state.count}
+//           </div>
+//           <button onClick={this.handleIncrement}>Increment by 1</button>
+//           <button onClick={this.handleDecrement}>Decrement by 1</button>
+//         </div>
+//       )
+//     }
+//   }
 export default App;
 

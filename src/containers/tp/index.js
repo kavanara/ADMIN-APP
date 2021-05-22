@@ -162,48 +162,50 @@ import { Container } from "react-bootstrap";
 import HeatMap from "react-heatmap-grid";
 import Select from "react-select";
 import Layout from "../../components/Layout";
-const xLabels = [0, 1];
+const xLabels = [0, 1,2,3,4,5,6,7];
 let lineData = [[], []];
-let box = [[], []];
-// Display only even labels
+
+
 const xLabelsVisibility = new Array(24)
   .fill(0)
   .map((_, i) => (i % 1 === 0 ? true : false));
 
-const yLabels = ["Sun", "Mon"];
+const yLabels = ["0", "1",];
 
 const data = [
-  [10, 20],
-  [30, 40],
+  [10, 20,30,40,50,60,70,80],
+  [30, 40,60,60,70,80,90,100],
 ];
 const data00 = [
-  [11, 21],
-  [31, 41],
+  [11, 21,31,41,51,61,71,81],
+  [31, 41,51,61,71,81,91,101],
 ];
 const data01 = [
-  [12, 22],
-  [32, 42],
-];
-const data10 = [
-  [13, 23],
-  [33, 43],
+  [12, 22,32,42,52,62,72,82],
+  [32, 42,52,62,72,82,92,102],
 ];
 
-const data11= [
-  [1, 1],
-  [2, 2],
+const data11 = [
+  [1, 1,1, 1,1, 1,1, 1],
+  [2, 2,2, 2,2, 2,2, 2],
+];
+const data0x= [
+  [0, 0,1, 0,0, 0,0, 0],
+  [0, 0,0, 0,0, 0,1, 0],
+];
+const data1x = [
+  [0,0,0,1,0,0,0,1],
+  [1,1,0,0,0,0,0,0],
 ];
 
 class App extends Component {
   state = {
     selectedOption: "",
     options: [
-      { value: "10k", label: "10k" },
-      { value: "20k", label: "20k" },
-      { value: "30k", label: "30k" },
-      { value: "40k", label: "40k" },
+      { value: "With Anomaly", label: "With Anomaly" },
+      { value: "Without Anomaly", label: "Without Anomaly" },
     ],
-    anomalyDiscrepancy:[[],[]],
+    anomalyDiscrepancy: [[], []],
   };
 
   handleChange = (selectedOption) => {
@@ -211,25 +213,32 @@ class App extends Component {
     this.setState({
       selectedOption: this.state.options.value,
     });
-    if (selectedOption.value === "10k") {
+    if (selectedOption.value === "With Anomaly") {
       lineData = data;
-      
-      
     }
-    if (selectedOption.value === "20k") {
+    if (selectedOption.value === "Without Anomaly") {
       lineData = data00;
     }
-
-    
   };
 
   disp = (a, b) => {
     var a, b;
-    this.setState({ anomalyDiscrepancy:data01})
-    alert(`Clicked ${a}, ${b}`);
+    if (lineData === data) {
+      if (a == 0 && b == 0) {
+        this.setState({ anomalyDiscrepancy: data0x });
+      } 
+      else 
+      this.setState({ anomalyDiscrepancy: data1x });
+    } 
+    else if (lineData === data00) {
+      if (a == 1 && b == 1) {
+        this.setState({ anomalyDiscrepancy: data11 });
+      } 
+      else 
+      this.setState({ anomalyDiscrepancy: data01 });
+    } 
+    //alert(`Clicked ${a}, ${b}`);
     console.log(a, b);
-    
-    
   };
 
   render() {
@@ -261,7 +270,7 @@ class App extends Component {
               onClick={(x, y) => this.disp(x, y)}
               // onClick={(x, y) => alert(`Clicked ${x}, ${y}`)}
               cellStyle={(background, value, min, max, data, x, y) => ({
-                background: `rgb(0, 151, 230, ${
+                background: `rgb(245, 27, 0, ${
                   1 - (max - value) / (max - min)
                 })`,
                 fontSize: "11.5px",
@@ -270,26 +279,29 @@ class App extends Component {
               cellRender={(value) => value && <div>{value}</div>}
             />
           </div>
-<br/>
-<br/>
-<br/>
+          <br />
+          <br />
+          <br />
 
           <HeatMap
-        xLabels={xLabels}
-        yLabels={yLabels}
-        xLabelsLocation={"bottom"}
-        xLabelsVisibility={xLabelsVisibility}
-        xLabelWidth={60}
-        data={this.state.anomalyDiscrepancy}
-        squares
-        height={35}
-        cellStyle={(background, value, min, max, data, x, y) => ({
-          background: `rgb(0, 151, 230, ${1 - (max - value) / (max - min)})`,
-          fontSize: "11.5px",
-          color: "#444",
-        })}
-        cellRender={(value) => value && <div>{value}</div>}
-      />
+            xLabels={xLabels}
+            yLabels={yLabels}
+            xLabelsLocation={"bottom"}
+            xLabelsVisibility={xLabelsVisibility}
+            xLabelWidth={60}
+            data={this.state.anomalyDiscrepancy}
+            squares
+            height={35}
+            cellStyle={(background, value, min, max, data, x, y) => ({
+              background: `rgb(245, 27, 0, ${
+                1 - (max - value) / (max - min)
+              })`,
+              fontSize: "11.5px",
+              color: "#444",
+            })}
+            cellRender={(value) => value && <div>{value}</div>}
+          />
+
         </Container>
       </Layout>
     );
