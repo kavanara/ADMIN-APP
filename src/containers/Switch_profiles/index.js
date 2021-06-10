@@ -68,7 +68,7 @@ export class App extends React.Component {
                         return (
                           <tr key={item}>
 
-<td scope="col" width="40%" class="text-left">
+                          <td scope="col" width="40%" class="text-left">
                           <input
                             type="checkbox"
                             id={item.id}

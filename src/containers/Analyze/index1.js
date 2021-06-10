@@ -33,7 +33,7 @@ const lineDataSignal = {
       pointHoverBorderWidth: 22,
       pointRadius: 5,
       pointHitRadius: 10,
-      data: [,25,],
+      data: [,50,],
     },
   ],
 };
